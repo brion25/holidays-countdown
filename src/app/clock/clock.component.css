@@ -29,3 +29,13 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+@media (max-width: 640px) {
+    .countdown {
+        font-size: 2.5rem;
+    }
+
+    .countdown:not(:last-child):after {
+        top: 55%;
+    }
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { HolidayApiService } from '../common/services/holiday-api.service'
 import { Holiday } from '../common/types/holiday'
+import { Location } from '../common/types/location'
 
 @Component({
   selector: 'app-month-holidays',
@@ -9,6 +10,7 @@ import { Holiday } from '../common/types/holiday'
   styleUrls: ['./month-holidays.component.css']
 })
 export class MonthHolidaysComponent implements OnInit {
+  @Input() location: Location;
   months = [
     'January',
     'February',

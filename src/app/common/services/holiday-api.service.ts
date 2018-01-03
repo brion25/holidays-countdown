@@ -7,19 +7,19 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { stringify } from 'querystring'
 
+import { IpInfoApiService } from './ip-info-api.service'
 import { HolidayAPIResponse, IpInfoAPIResponse } from '../types/api-responses'
 import { Holiday } from '../types/holiday'
 
 @Injectable()
 export class HolidayApiService {
-  private IPINFO_HOST: string = 'https://ipinfo.io';
   private HOLIDAYS_API_HOST: string = 'https://holidayapi.com/v1/holidays';
   private HOLIDAYS_API_KEY: string = 'ddd6f750-641d-4c74-8f83-44bca9d41134';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private ipInfoService: IpInfoApiService) { }
 
   getNextHoliday(): Observable<Holiday> {
-    return this.http.get(this.IPINFO_HOST)
+    return this.ipInfoService.getLocationBasedOnTheIP()
       .mergeMap((data: IpInfoAPIResponse) => {
         const today = moment();
         const querystring = {
@@ -40,8 +40,8 @@ export class HolidayApiService {
       })
   }
 
-  getMonthHolidays(month): Observable<Holiday> {
-    return this.http.get(this.IPINFO_HOST)
+  getMonthHolidays(month): Observable<Array<Holiday>> {
+    return this.ipInfoService.getLocationBasedOnTheIP()
       .mergeMap((data: IpInfoAPIResponse) => {
         const today = moment();
         const querystring = {

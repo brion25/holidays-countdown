@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ClockComponent } from './clock/clock.component';
 
 import { HolidayApiService } from './common/services/holiday-api.service';
+import { IpInfoApiService } from './common/services/ip-info-api.service';
+
 import { MonthHolidaysComponent } from './month-holidays/month-holidays.component'
 
 
@@ -23,7 +25,8 @@ import { MonthHolidaysComponent } from './month-holidays/month-holidays.componen
     FormsModule
   ],
   providers: [
-    HolidayApiService
+    HolidayApiService,
+    IpInfoApiService
   ],
   bootstrap: [AppComponent]
 })

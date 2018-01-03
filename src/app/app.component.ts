@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HolidayApiService } from './common/services/holiday-api.service'
+import { IpInfoApiService } from './common/services/ip-info-api.service'
 import { Holiday } from './common/types/holiday'
+import { Location } from './common/types/location'
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,21 @@ export class AppComponent implements OnInit{
     name: '',
     date: ''
   }
+  location: Location = {
+    country: '',
+    city: ''
+  }
 
-  constructor(private holidayService: HolidayApiService) {  }
+  constructor(private holidayService: HolidayApiService, private ipInfoService: IpInfoApiService) {
+    this.getInitialData = this.getInitialData.bind(this);
+  }
 
   ngOnInit() {
-    this.holidayService.getNextHoliday().subscribe(data => this.holidayInfo = data)
+    this.ipInfoService.getLocationBasedOnTheIP().subscribe(this.getInitialData);
+  }
+
+  getInitialData(location) {
+    this.location = location;
+    this.holidayService.getNextHoliday().subscribe(data => this.holidayInfo = data);
   }
 }

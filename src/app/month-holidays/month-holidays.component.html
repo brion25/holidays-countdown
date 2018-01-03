@@ -1,6 +1,6 @@
 <div data-component="month-holidays" class="month-holidays">
   <div>
-    Pick a Month to see the Holidays
+    Pick a Month to see the Holidays in {{location.country}}
     <select [(ngModel)]="selectedMonth" (change)="onChange($event)">
       <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
     </select>
@@ -10,7 +10,7 @@
       <ul class="container">
         <li class="holiday" *ngFor="let holiday of holidays">
           <h3>{{holiday.name}}</h3>
-          <span>{{holiday.date}}</span>
+          <span class="date">{{holiday.date}}</span>
         </li>
       </ul>
     </div>

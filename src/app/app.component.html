@@ -6,12 +6,12 @@
   <div *ngIf="holidayInfo.date; else loadingTemplate">
     <div class="next-holiday">
       <h4>
-        <small>your next holiday is </small>{{holidayInfo.name}}<small> in:</small>
+        <small>your next holiday is </small>{{holidayInfo.name}}<small> in {{location.country}}:</small>
       </h4>
     </div>
     <app-clock [holidayDate]="holidayInfo.date"></app-clock>
   </div>
-  <app-month-holidays></app-month-holidays>
+  <app-month-holidays [location]="location"></app-month-holidays>
 </div>
 
 <ng-template #loadingTemplate>
