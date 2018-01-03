@@ -1,0 +1,31 @@
+.container {
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 12rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.countdown {
+    position: relative;
+    padding-top: 1.5rem;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown h3 {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    font-size: 1rem;
+    transform: translateX(-50%);
+}
+
+.countdown:not(:last-child):after {
+    content: ':';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

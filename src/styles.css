@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: sans-serif;
+}
+
+.header {
+    font-weight: 100;
+    font-size: 1.75rem;
+}
+
+.sub-header {
+    font-weight: 100;
+    font-size: 1.25rem;
+}
+
+.container {
+    display: grid;
+}
