@@ -3,7 +3,18 @@
   <h1 class="header">
     Welcome to {{ title }}!
   </h1>
-  <app-clock [holiday]="holidayInfo.date"></app-clock>
-  <app-holiday></app-holiday>
+  <div *ngIf="holidayInfo.date; else loadingTemplate">
+    <div class="next-holiday">
+      <h4>
+        <small>your next holiday is </small>{{holidayInfo.name}}<small> in:</small>
+      </h4>
+    </div>
+    <app-clock [holidayDate]="holidayInfo.date"></app-clock>
+  </div>
+  <app-month-holidays></app-month-holidays>
 </div>
+
+<ng-template #loadingTemplate>
+  Loading...
+</ng-template>
 

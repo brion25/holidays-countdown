@@ -1,0 +1,17 @@
+.container {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 12rem;
+}
+
+.holiday {
+    list-style: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.holiday h3 {
+    margin: 0 0 1rem 0;
+    font-weight: 100;
+}

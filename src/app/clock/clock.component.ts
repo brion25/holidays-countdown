@@ -8,7 +8,7 @@ import { Countdown } from '../common/types/clock'
   styleUrls: ['./clock.component.css']
 })
 export class ClockComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() holiday: string;
+  @Input() holidayDate: string;
   countdown: Countdown = {
     months: 0,
     days: 0,
@@ -24,7 +24,8 @@ export class ClockComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit() {
-    this.holidayMs = +moment(this.holiday).format('x');
+    this.holidayMs = +moment(this.holidayDate).format('x');
+    this.ticking();
     this.interval = setInterval(this.ticking, 1000);
   }
 
@@ -33,9 +34,10 @@ export class ClockComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes) {
-    const { holiday } = changes;
-    this.holidayMs = +moment(holiday.currentValue).format('x');
+    const { holidayDate } = changes;
+    this.holidayMs = +moment(holidayDate.currentValue).format('x');
     clearInterval(this.interval);
+    this.ticking();
     this.interval = setInterval(this.ticking, 1000);
   }
 

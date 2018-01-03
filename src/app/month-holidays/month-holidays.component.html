@@ -1,0 +1,30 @@
+<div data-component="month-holidays" class="month-holidays">
+  <div>
+    Pick a Month to see the Holidays
+    <select [(ngModel)]="selectedMonth" (change)="onChange($event)">
+      <option *ngFor="let month of months; let i = index" [value]="i + 1">{{month}}</option>
+    </select>
+  </div>
+  <div *ngIf="!loading; else loadingTemplate" [hidden]="!selectedMonth">
+    <div *ngIf="holidays.length; else noHolidaysTemplate">
+      <ul class="container">
+        <li class="holiday" *ngFor="let holiday of holidays">
+          <h3>{{holiday.name}}</h3>
+          <span>{{holiday.date}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div>
+    Loading...
+  </div>
+</ng-template>
+
+<ng-template #noHolidaysTemplate>
+  <div>
+    No Holidays for that month
+  </div>
+</ng-template>
